@@ -1,0 +1,75 @@
+1. show Databases;
+
+2.create table (RollNo int , Name varchar(255) ,Address varchar(255),Marks int , Age int);
+
+3. Describe Student;
+
+4. insert into student values(1,'Amit','Pune',90,21);
+
+5. Select * from student;
+
+6. select * from student where address = 'Nasik';
+
+7. select * from student where age = 21;
+
+8. select * from student where marks = 90;
+
+9. select Name from student where address = 'Mumbai';
+
+10.select Name,Age from student where Age > 23;
+
+11. select Name , Age from student where Age > 23 AND Address = 'Pune';
+
+12. update student set Address = 'Satara' where Rollno = 5 AND Name = 'Pooja';
+
+13. select * from student order by Name;
+
+14. select * from student where Address = 'Pune' order by Marks DESC;
+
+15. select * from student where Address = 'Pune' AND Age > 20 order by Marks DESC;
+
+16. select * from student where Name = 'Yuvraj';
+
+17. select Name from student where Age > 20 AND Address = 'Nasik';
+
+18. select Distinct Address from student;
+
+19. Select * from Student LIMIT 5;
+
+20. Select Max(marks) from student;
+
+21. select Count(Marks) from student where Address = 'pune';
+
+22. select * from student where Name like P%;
+
+23. select Address,Count(Address) from Student;
+
+24. select address , avg(marks) from student group by Address;
+
+25. select * from Student where Name like P% AND Marks > 90;
+
+26. select Name , Max(Marks) as Marks from Student Where Marks <(Select Max(marks)from Student);
+
+27. select Address,Count(RollNo)From student group by Addresss;
+
+28. select Age,Count(ROLLNO) from student group by age;
+
+29. select name,address,age,Min(marks) from student;
+
+30. select Count(Rollno),Address from student group by Address Having Count(Rollno)>1;
+
+31. select Name from student where name Like '_ _ _ _';
+
+32. select address ,Max(marks) from Student group by Address;
+
+33. select address, Min(marks) from student group by Address;
+
+34. select Name,age from student where Age >=25 AND Age <=30;
+
+35. select * from student order by Marks DESC;
+
+36. Update student SET marks = Marks * 1.15 where Name = 'POOJA';
+
+37. update student set Marks = Marks * 1.2 Where Address = 'Pune' OR Address = 'Satara';
+
+38. select name from student where address NOT IN('Pune','Mumbai','Nashik'); 
