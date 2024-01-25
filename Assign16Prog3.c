@@ -1,25 +1,32 @@
 #include<stdio.h>
 #include<stdlib.h>
 
-#define TRUE 1
-#define FALSE 0
 
-typedef int BOOL;
 
-BOOL Check(int Arr[], int iLength , int iNo)
+int Difference(int Arr[], int iLength)
 {
     int iCnt = 0;
+    int iMax = Arr[0];
+    int iMin = Arr[0];
+    int iDifference = 0;
+
+
     for(iCnt = 0 ; iCnt < iLength ; iCnt++)
     {
-        if(Arr[iCnt] == iNo)
+        if(Arr[iCnt] > iMax)
         {
-            return TRUE;
+            iMax = Arr[iCnt];
         }
         else 
         {
-            return FALSE;
+            iMin = Arr[iCnt];
         }
     }
+
+    iDifference = iMax - iMin;
+    return iDifference;
+
+   
 }
 
 
@@ -27,14 +34,13 @@ int main()
 {
     int iSize = 0;
     int *ptr = NULL;
-    int iValue = 0 , iCnt = 0;
-    BOOL bRet = FALSE;
+    int iValue = 0 , iCnt = 0 , iRet = 0;
+   
 
     printf("Enter Number of elements :\n");
     scanf("%d",&iSize);
 
-    printf("Enter the number :\n");
-    scanf("%d",&iValue);
+   
 
     ptr = (int *)malloc(iSize * sizeof(int));
 
@@ -51,17 +57,10 @@ int main()
         scanf("%d",&ptr[iCnt]);
     }
 
-    bRet = Check(ptr , iSize,iValue);
+    iRet = Difference(ptr ,iSize);
 
-    if(bRet == TRUE)
-    {
-        printf("Number is persent .\n");
-    }
-    else 
-    {
-        printf("Number is not present . \n");
-    }
-
+    printf("%d\n",iRet);
+ 
     return 0;
 
     free(ptr);

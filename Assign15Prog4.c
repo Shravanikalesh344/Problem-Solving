@@ -1,25 +1,17 @@
 #include<stdio.h>
 #include<stdlib.h>
 
-#define TRUE 1
-#define FALSE 0
 
-typedef int BOOL;
-
-BOOL Check(int Arr[], int iLength , int iNo)
+void Range(int Arr[], int iLength , int iStart , int iEnd)
 {
     int iCnt = 0;
     for(iCnt = 0 ; iCnt < iLength ; iCnt++)
     {
-        if(Arr[iCnt] == iNo)
+        if((Arr[iCnt] >= iStart) && (Arr[iCnt] <= iEnd))
         {
-            return TRUE;
+            printf("%d\t",Arr[iCnt]);
         }
-        else 
-        {
-            return FALSE;
-        }
-    }
+    }   
 }
 
 
@@ -27,14 +19,18 @@ int main()
 {
     int iSize = 0;
     int *ptr = NULL;
-    int iValue = 0 , iCnt = 0;
-    BOOL bRet = FALSE;
+    int iValue1 = 0 ,iValue2 = 0 ,iCnt = 0;
+
 
     printf("Enter Number of elements :\n");
     scanf("%d",&iSize);
 
-    printf("Enter the number :\n");
-    scanf("%d",&iValue);
+    printf("Enter Starting point :\n");
+    scanf("%d",&iValue1);
+
+    printf("Enter Ending Point :\n");
+    scanf("%d",&iValue2);
+
 
     ptr = (int *)malloc(iSize * sizeof(int));
 
@@ -51,18 +47,10 @@ int main()
         scanf("%d",&ptr[iCnt]);
     }
 
-    bRet = Check(ptr , iSize,iValue);
+    Range(ptr , iSize,iValue1, iValue2);
 
-    if(bRet == TRUE)
-    {
-        printf("Number is persent .\n");
-    }
-    else 
-    {
-        printf("Number is not present . \n");
-    }
-
+      free(ptr);
     return 0;
 
-    free(ptr);
+  
 }

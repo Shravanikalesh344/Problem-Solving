@@ -1,40 +1,37 @@
 #include<stdio.h>
 #include<stdlib.h>
 
-#define TRUE 1
-#define FALSE 0
 
-typedef int BOOL;
-
-BOOL Check(int Arr[], int iLength , int iNo)
+int Product(int Arr[], int iLength)
 {
     int iCnt = 0;
+    int iOddProd = 1;
     for(iCnt = 0 ; iCnt < iLength ; iCnt++)
     {
-        if(Arr[iCnt] == iNo)
+        if((Arr[iCnt] % 2) != 0)
         {
-            return TRUE;
+           iOddProd = iOddProd * Arr[iCnt];
         }
-        else 
+        else
         {
-            return FALSE;
+            iOddProd = 0;
         }
-    }
+    }   
+    return iOddProd;
 }
 
 
 int main()
 {
-    int iSize = 0;
+    int iSize = 0 , iRet = 0;
     int *ptr = NULL;
-    int iValue = 0 , iCnt = 0;
-    BOOL bRet = FALSE;
+    int iValue1 = 0 ,iValue2 = 0 ,iCnt = 0;
+
 
     printf("Enter Number of elements :\n");
     scanf("%d",&iSize);
 
-    printf("Enter the number :\n");
-    scanf("%d",&iValue);
+    
 
     ptr = (int *)malloc(iSize * sizeof(int));
 
@@ -51,18 +48,13 @@ int main()
         scanf("%d",&ptr[iCnt]);
     }
 
-    bRet = Check(ptr , iSize,iValue);
+    iRet = Product(ptr , iSize);
 
-    if(bRet == TRUE)
-    {
-        printf("Number is persent .\n");
-    }
-    else 
-    {
-        printf("Number is not present . \n");
-    }
+    printf("Product of odd elements is : %d",iRet);
+
+    free(ptr);
 
     return 0;
 
-    free(ptr);
+  
 }

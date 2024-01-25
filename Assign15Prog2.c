@@ -1,25 +1,22 @@
 #include<stdio.h>
 #include<stdlib.h>
 
-#define TRUE 1
-#define FALSE 0
 
-typedef int BOOL;
 
-BOOL Check(int Arr[], int iLength , int iNo)
+int LastOcc(int Arr[], int iLength , int iNo)
 {
     int iCnt = 0;
-    for(iCnt = 0 ; iCnt < iLength ; iCnt++)
+    int iRetIndex = -1;
+    for(iCnt = (iLength-1) ; iCnt >= 0 ; iCnt--)
     {
-        if(Arr[iCnt] == iNo)
+        if(iNo == Arr[iCnt])
         {
-            return TRUE;
+            iRetIndex = iCnt;
         }
-        else 
-        {
-            return FALSE;
-        }
+       
+     
     }
+    return iRetIndex;
 }
 
 
@@ -27,8 +24,8 @@ int main()
 {
     int iSize = 0;
     int *ptr = NULL;
-    int iValue = 0 , iCnt = 0;
-    BOOL bRet = FALSE;
+    int iValue = 0 , iCnt = 0 , iRet = 0;
+   
 
     printf("Enter Number of elements :\n");
     scanf("%d",&iSize);
@@ -51,17 +48,10 @@ int main()
         scanf("%d",&ptr[iCnt]);
     }
 
-    bRet = Check(ptr , iSize,iValue);
+    iRet = LastOcc(ptr , iSize,iValue);
 
-    if(bRet == TRUE)
-    {
-        printf("Number is persent .\n");
-    }
-    else 
-    {
-        printf("Number is not present . \n");
-    }
-
+    printf("%d\n",iRet);
+ 
     return 0;
 
     free(ptr);
